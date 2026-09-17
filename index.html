@@ -297,6 +297,38 @@
       fill: currentColor;
     }
 
+    .logout-fab {
+      position: fixed;
+      top: 22px;
+      right: 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      z-index: 40;
+      backdrop-filter: blur(6px);
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+
+    .logout-fab:hover {
+      background: rgba(255, 92, 122, 0.15);
+      border-color: var(--danger);
+      color: var(--danger);
+      transform: translateY(-1px);
+    }
+
+    .logout-fab svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
     .admin-overlay {
       position: fixed;
       inset: 0;
@@ -518,9 +550,15 @@
           d="M19.14 12.94a7.5 7.5 0 000-1.88l2.03-1.58a.5.5 0 00.12-.64l-1.92-3.32a.5.5 0 00-.61-.22l-2.39.96a7.3 7.3 0 00-1.62-.94l-.36-2.54a.5.5 0 00-.5-.42h-3.84a.5.5 0 00-.5.42l-.36 2.54c-.58.24-1.12.55-1.62.94l-2.39-.96a.5.5 0 00-.61.22L2.71 8.84a.5.5 0 00.12.64l2.03 1.58a7.5 7.5 0 000 1.88l-2.03 1.58a.5.5 0 00-.12.64l1.92 3.32c.13.22.39.3.61.22l2.39-.96c.5.39 1.04.7 1.62.94l.36 2.54c.04.24.25.42.5.42h3.84c.25 0 .46-.18.5-.42l.36-2.54c.58-.24 1.12-.55 1.62-.94l2.39.96c.22.08.48 0 .61-.22l1.92-3.32a.5.5 0 00-.12-.64l-2.03-1.58zM12 15.6A3.6 3.6 0 1112 8.4a3.6 3.6 0 010 7.2z" />
       </svg>
     </button>
-  </div>
 
-  <!-- ============ PANEL EDIT ============ -->
+    <button id="logoutFab" class="logout-fab" title="Keluar" aria-label="Keluar">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M16 13v-2H7V8l-5 4 5 4v-3h9zm4-10H10a2 2 0 00-2 2v3h2V5h10v14H10v-3H8v3a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2z" />
+      </svg>
+      Keluar
+    </button>
+  </div>
   <div id="adminOverlay" class="admin-overlay" hidden></div>
   <aside id="adminPanel" class="admin-panel" hidden aria-label="Panel edit">
     <div class="admin-head">
@@ -992,6 +1030,7 @@
 
       $("loginForm").addEventListener("submit", handleLogin);
       $("adminToggle").addEventListener("click", openAdmin);
+      $("logoutFab").addEventListener("click", logout);
       $("adminClose").addEventListener("click", closeAdmin);
       $("adminOverlay").addEventListener("click", closeAdmin);
       $("addLink").addEventListener("click", addLink);
